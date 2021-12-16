@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89ff2e21-15ca-4c80-b363-a1bd44409a6b" name="Changes" comment="squash! main and readme files were created">
-      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="89ff2e21-15ca-4c80-b363-a1bd44409a6b" name="Changes" comment="3 unversioned files commited">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -83,7 +90,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639427759266</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="main and readme files were created">
+      <created>1639428058262</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639428058262</updated>
+    </task>
+    <task id="LOCAL-00005" summary="3 unversioned files commited">
+      <created>1639428585687</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1639428585687</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,8 +131,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="main and readme files were created" />
     <MESSAGE value="squash! main and readme files were created" />
-    <option name="LAST_COMMIT_MESSAGE" value="squash! main and readme files were created" />
+    <MESSAGE value="main and readme files were created" />
+    <MESSAGE value="3 unversioned files commited" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 unversioned files commited" />
   </component>
 </project>
