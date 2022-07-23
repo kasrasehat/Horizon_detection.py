@@ -7,7 +7,7 @@ import os
 import scipy.io as sio
 import torch
 import argparse
-from networks import VGG_model as Net
+from networks import VGG_model1 as Net
 # from Networks import FC_Net as Net
 import torch.nn.functional as F
 import torch.optim as optim
@@ -80,7 +80,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
         loss_y = F.mse_loss(output[:, 0], target[:, 0], reduction='sum')
         loss_y1 = F.mse_loss(output, target, reduction='mean')
         loss_teta = F.mse_loss(output[:,1], target[:, 1], reduction='sum')
-        loss1 = loss_y + 10 * loss_teta
+        loss1 = loss_y + loss_teta
         #loss_y +
         ##loss.backward()
         loss1.backward()
@@ -179,7 +179,7 @@ def main():
                         help='input batch size for testing (default: 1000)')
     parser.add_argument('--epochs', type=int, default=50, metavar='N',
                         help='number of epochs to train (default: 14)')
-    parser.add_argument('--lr', type=float, default=0.001, metavar='LR',
+    parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
                         help='learning rate (default: 1.0)')
     parser.add_argument('--gamma', type=float, default=0.2, metavar='M',
                         help='Learning rate step gamma (default: 0.7)')
@@ -215,11 +215,17 @@ def main():
 
     #model = models.ResNet
     model = Net().to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=4e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay = 4e-4)
     # weight_decay = 4e-4
+    for param in model.parameters():
+        param.requires_grad_(False)
+
+     #list(model.parameters())[-12].requires_grad == False
+    k = 4
+    for i in range(1,k):
+        list(model.parameters())[-i].requires_grad_(True)
 
     scheduler = StepLR(optimizer, step_size=5, gamma=args.gamma)
-
     if args.weight:
         if os.path.isfile(args.weight):
             checkpoint = torch.load(args.weight)

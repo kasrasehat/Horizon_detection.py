@@ -114,8 +114,8 @@ class VGG_model(nn.Module):
         '''
         dir(models) shows all pre-built models 
         '''
-        self.feature_extractor = nn.Sequential(*list(models.vgg19(pretrained = True, progress = True).children())[:-1]).requires_grad_(False)
-        self.classifier = nn.Sequential(*list(models.vgg19(pretrained=True, progress=True).children())[-1]).requires_grad_(True)
+        self.feature_extractor = nn.Sequential(*list(models.vgg19(pretrained = True, progress = True).children())[:-1])
+        self.classifier = nn.Sequential(*list(models.vgg19(pretrained=True, progress=True).children())[-1])
         self.fc1 = nn.Linear(1000, 150)
         self.fc2 = nn.Linear(150, 2)
 
@@ -138,5 +138,37 @@ class VGG_model(nn.Module):
         x = self.fc2(x)
         x[:,0] = F.sigmoid(x[:, 0])
         x[:,1] = F.tanh(x[:, 1])
-        output = x
-        return output
+        
+        return x
+
+
+class VGG_model1(nn.Module):
+    def __init__(self):
+        super(VGG_model1, self).__init__()
+        '''
+        dir(models) shows all pre-built models 
+        '''
+        self.feature_extractor = nn.Sequential(*list(models.vgg19(pretrained=True, progress=True).children())[:-1])
+        self.classifier = nn.Sequential(*list(models.vgg19(pretrained=True, progress=True).children())[-1])
+        self.fc1 = nn.Linear(25088, 150)
+        self.fc2 = nn.Linear(150, 2)
+
+    # def init_conv2d(self):
+    #     """
+    #     Initialize convolution parameters using xavier initialization.
+    #     """
+    #     for c in self.children():
+    #         if isinstance(c, nn.Conv2d):
+    #             nn.init.xavier_uniform_(c.weight)
+    #             nn.init.constant_(c.bias, 0.)
+
+    def forward(self, x):
+        x = self.feature_extractor(x)
+        x = x.view(x.shape[0], -1)
+        # x = F.max_pool2d(x, 2)
+        x = self.fc1(x)
+        x = self.fc2(x)
+        x[:, 0] = torch.sigmoid(x[:, 0])
+        x[:, 1] = torch.tanh(x[:, 1])
+
+        return x
