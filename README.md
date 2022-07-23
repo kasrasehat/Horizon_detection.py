@@ -20,3 +20,25 @@ horizon is a line.
 
 ##Data Structure
 ####Dataset which will be fed to dataloader consist of a list including names of frames and a numpy array including parameters corrosponding to each frame
+
+##Version 2 for solving horizon line problem:
+because of the complexity of input images and also large derivatives in consecutive frames, simple networks like ones used in
+V.1 are not useful. Therefor networks with complex structure which have data extractor will be used. VGG16, ResNet or even BEIT seem to have 
+good accuracy in such problems.
+
+##Steps for creating version 2:
+###Data augmentation:
+Because of low number of data we need to augment exist data. augmentation includes rotation and adding noise to each data. 
+If rotation method is imposed to image, label is also should be changed. Therefor we can augment 1000 data to more than 10000 data.
+
+###Finding best pretrained feature extractor
+
+###Labeling data in three forms:
+####Method one:
+middle point cordinate and line angle
+
+####Method two:
+many points on the line
+
+####Method four:
+first, middle and end point
