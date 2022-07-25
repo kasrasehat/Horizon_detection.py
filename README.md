@@ -1,6 +1,6 @@
 # horizon-line-detection
 first step of this project is converting videos into frames.
-afterwards we have to save all of data in a numpy array. 
+afterwards we have to save all of the data in a numpy array. 
 because of high volume of data we will encounter out of memory error.
 for this reason, we can change the strategy of problem solving.
 instead of passing each frame into numpy array we can pass the path of each frame to numpy array.

@@ -173,7 +173,7 @@ def evaluation(args, model, device, valid_loader, optimizer, val_loss_min, epoch
 def main():
     # argparse = argparse.parse_args()
     parser = argparse.ArgumentParser(description='PyTorch horizon line detection')
-    parser.add_argument('--batch-size', type=int, default=16, metavar='N',
+    parser.add_argument('--batch-size', type=int, default=32, metavar='N',
                         help='input batch size for training (default: 64)')
     parser.add_argument('--valid-batch-size', type=int, default=500, metavar='N',
                         help='input batch size for testing (default: 1000)')
@@ -267,7 +267,7 @@ def main():
     num_of_files = int(len(files)/2)
     x = [int(i) for i in range(1, num_of_files)]
     y = [int(i) for i in range(1, num_of_files)]
-    x_train, x_valid, y_train, y_valid = train_test_split(x, y, test_size=0.05, shuffle=True)
+    x_train, x_valid, y_train, y_valid = train_test_split(x, y, test_size=0.15, shuffle=True)
 
     tensor_x = torch.Tensor(x_train)  # transform to torch tensor
     tensor_y = torch.Tensor(y_train)
